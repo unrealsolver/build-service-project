@@ -1,0 +1,14 @@
+{
+	"name": "build-service-project",
+	"dependencies": {
+	},
+	"devDependencies": {
+		"gulp": "~3.6.2",
+		"gulp-coffee": "~1.4.2",
+		"gulp-util": "~2.2.14",
+		"underscore": "*"
+	},
+	"engines": {
+		"node": ">=0.9.0"
+	}
+}
