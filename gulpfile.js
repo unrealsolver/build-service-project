@@ -1,11 +1,7 @@
 var gulp = require('gulp')
 var coffee = require('gulp-coffee')
 var gutil = require('gulp-util')
-
-var http = require('http')
-var app = require('./build/app')
-
-var port = 3000
+var nodemon = require('gulp-nodemon')
 
 gulp.task('coffee', function() {
 	gulp.src('./app/*.coffee')
@@ -13,8 +9,12 @@ gulp.task('coffee', function() {
 		.pipe(gulp.dest('./build'))
 })
 
-gulp.task('server', function() {
-	http.createServer(app.onRequest).listen(port)
+gulp.task('watch', function() {
+  gulp.watch('./app/*.coffee', ['coffee'])
 })
 
-gulp.task('default', ['coffee', 'server'] )
+gulp.task('serve', function() {
+  nodemon({script: './build/app.js'})
+})
+
+gulp.task('default', ['coffee', 'watch', 'serve'] )
